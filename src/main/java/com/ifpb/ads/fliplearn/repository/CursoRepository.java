@@ -1,0 +1,9 @@
+package com.ifpb.ads.fliplearn.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.ifpb.ads.fliplearn.model.Curso;
+
+public interface CursoRepository extends CrudRepository<Curso, Long>{
+
+}
