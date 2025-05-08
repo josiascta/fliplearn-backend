@@ -38,8 +38,7 @@ public class CursoController {
     @PutMapping("/{id}")
     public Curso putCurso(@PathVariable Long id, @RequestBody Curso curso) {
         //TODO: process PUT request
-        service.update(id, curso);
-        return curso;
+        return service.update(id, curso);
     }
 
     @DeleteMapping("/{id}")

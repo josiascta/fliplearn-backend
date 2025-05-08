@@ -25,5 +25,8 @@ public class Curso {
     @Column(name = "descricaoCurso")
     private String descricao;
 
+    @Column
+    private int cargaHoraria;
+
     
 }

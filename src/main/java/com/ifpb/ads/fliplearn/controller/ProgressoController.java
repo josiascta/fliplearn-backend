@@ -21,8 +21,8 @@ public class ProgressoController {
     private ProgressoService service;
 
     @PostMapping
-    public void save(@RequestBody Progresso progresso){
-        service.save(progresso);
+    public Progresso save(@RequestBody Progresso progresso){
+        return service.save(progresso);
     }
 
     @GetMapping

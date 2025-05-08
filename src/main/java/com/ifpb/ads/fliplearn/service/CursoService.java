@@ -16,6 +16,11 @@ public class CursoService {
     @Autowired
     private CursoRepository repository;
 
+    public CursoService(CursoRepository repository2) {
+        //TODO Auto-generated constructor stub
+        repository = repository2;
+    }
+
     public Curso save(Curso curso){
         return this.repository.save(curso);
     }
@@ -28,10 +33,12 @@ public class CursoService {
         return cursos;
     }
 
-    public void update(Long id, Curso curso) {
-        // TODO Auto-generated method stub
-        if(id == curso.getId())
-            this.repository.save(curso);
+    public Curso update(Long id, Curso curso) {
+        if (id.equals(curso.getId())) {
+            return this.repository.save(curso);
+        } else {
+            throw new IllegalArgumentException("ID do curso não corresponde ao ID fornecido.");
+        }
     }
 
     public Curso findCursoById(Long id) {

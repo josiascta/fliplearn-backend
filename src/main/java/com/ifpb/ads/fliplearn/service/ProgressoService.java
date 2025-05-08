@@ -19,8 +19,8 @@ public class ProgressoService {
     private ProgressoRepository repository;
 
    
-    public void save(Progresso progresso){
-        repository.save(progresso);
+    public Progresso save(Progresso progresso){
+        return repository.save(progresso);
     }
 
     

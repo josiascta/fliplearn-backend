@@ -41,5 +41,8 @@ public class Progresso {
 
     @OneToOne
     private Curso curso;
+
+    // @ManyToOne
+    // private Aluno aluno;
     
 }
