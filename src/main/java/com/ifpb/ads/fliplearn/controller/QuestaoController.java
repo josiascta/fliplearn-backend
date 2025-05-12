@@ -12,39 +12,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ifpb.ads.fliplearn.entity.Progresso;
-import com.ifpb.ads.fliplearn.service.ProgressoService;
+import com.ifpb.ads.fliplearn.entity.Questao;
+import com.ifpb.ads.fliplearn.service.QuestaoService;
 
 @RestController
-@RequestMapping("progressos")
-public class ProgressoController {
-
+@RequestMapping("questoes")
+public class QuestaoController {
 
     @Autowired
-    private ProgressoService service;
+    private QuestaoService service;
+
 
     @PostMapping
-    public Progresso save(@RequestBody Progresso progresso){
-        return service.save(progresso);
+    public Questao save(@RequestBody Questao questao){
+        return service.saveQuestao(questao);
     }
 
     @GetMapping
-    public List<Progresso> getAll(){
+    public List<Questao> getAll(){
         return service.findAll();
     }
 
     @GetMapping("/{id}")
-    public Progresso getProgressoById(@PathVariable Long id){
+    public Questao getquestaoById(@PathVariable Long id){
         return this.service.getById(id);
     }
 
     @PutMapping("/{id}")
-    public Progresso update(@PathVariable Long id, @RequestBody Progresso progresso){
-        return this.service.update(id, progresso);
+    public Questao update(@PathVariable Long id, @RequestBody Questao questao){
+        return this.service.update(id, questao);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteProgresso(@PathVariable Long id){
+    public void deletequestao(@PathVariable Long id){
         this.service.delete(id);
     }
 }
