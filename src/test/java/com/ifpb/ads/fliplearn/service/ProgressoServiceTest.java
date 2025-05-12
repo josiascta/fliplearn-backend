@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Arrays;
 import java.util.List;
 
-import com.ifpb.ads.fliplearn.model.Curso;
-import com.ifpb.ads.fliplearn.model.Progresso;
+import com.ifpb.ads.fliplearn.entity.Curso;
+import com.ifpb.ads.fliplearn.entity.Progresso;
 import com.ifpb.ads.fliplearn.repository.ProgressoRepository;
 
 import org.junit.jupiter.api.BeforeEach;

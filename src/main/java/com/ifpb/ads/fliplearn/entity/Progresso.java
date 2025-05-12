@@ -1,4 +1,4 @@
-package com.ifpb.ads.fliplearn.model;
+package com.ifpb.ads.fliplearn.entity;
 
 import java.util.Date;
 
@@ -45,4 +45,8 @@ public class Progresso {
     // @ManyToOne
     // private Aluno aluno;
     
+
+    public Double getCargaHorariaDoCurso(){
+        return this.curso.getCargaHoraria();
+    }
 }

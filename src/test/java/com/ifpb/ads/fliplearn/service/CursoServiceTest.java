@@ -1,6 +1,6 @@
 package com.ifpb.ads.fliplearn.service;
 
-import com.ifpb.ads.fliplearn.model.Curso;
+import com.ifpb.ads.fliplearn.entity.Curso;
 import com.ifpb.ads.fliplearn.repository.CursoRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

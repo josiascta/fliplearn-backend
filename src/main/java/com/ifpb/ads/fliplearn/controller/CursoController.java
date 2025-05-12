@@ -4,7 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.ifpb.ads.fliplearn.model.Curso;
+
+import com.ifpb.ads.fliplearn.entity.Curso;
 import com.ifpb.ads.fliplearn.service.CursoService;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;

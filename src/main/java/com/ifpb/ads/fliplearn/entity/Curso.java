@@ -1,4 +1,5 @@
-package com.ifpb.ads.fliplearn.model;
+package com.ifpb.ads.fliplearn.entity;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,7 +27,8 @@ public class Curso {
     private String descricao;
 
     @Column
-    private int cargaHoraria;
+    private Double cargaHoraria;
 
-    
+    // @ManyToOne
+    // private Professor professor;
 }

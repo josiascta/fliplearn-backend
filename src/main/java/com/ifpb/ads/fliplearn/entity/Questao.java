@@ -1,4 +1,4 @@
-package com.ifpb.ads.fliplearn.model;
+package com.ifpb.ads.fliplearn.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

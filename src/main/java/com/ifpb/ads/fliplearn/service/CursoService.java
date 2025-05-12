@@ -7,7 +7,7 @@ import java.util.stream.StreamSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ifpb.ads.fliplearn.model.Curso;
+import com.ifpb.ads.fliplearn.entity.Curso;
 import com.ifpb.ads.fliplearn.repository.CursoRepository;
 
 @Service
