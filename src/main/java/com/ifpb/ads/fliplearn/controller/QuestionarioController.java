@@ -2,6 +2,9 @@ package com.ifpb.ads.fliplearn.controller;
 
 import com.ifpb.ads.fliplearn.entity.Questionario;
 import com.ifpb.ads.fliplearn.repository.QuestionarioRepository;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,10 +15,11 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/questionarios")
+@RequiredArgsConstructor
 public class QuestionarioController {
 
-    @Autowired
-    private QuestionarioRepository questionarioRepository;
+   
+    private final QuestionarioRepository questionarioRepository;
 
     // Criar um novo questionário
     @PostMapping

@@ -27,14 +27,14 @@ class QuestionarioServiceTest {
     void testFindQuestionarioById_QuestionarioExiste() {
         Questionario questionario = new Questionario();
         questionario.setId(1L);
-        questionario.setEnunciado("Qual é a capital do Brasil?");
+        
 
         when(repository.findById(1L)).thenReturn(Optional.of(questionario));
 
         Questionario encontrado = service.getQuestionarioById(1L).orElse(null);
 
         assertNotNull(encontrado);
-        assertEquals("Qual é a capital do Brasil?", encontrado.getEnunciado());
+       
         verify(repository, times(1)).findById(1L);
     }
 
@@ -54,14 +54,14 @@ class QuestionarioServiceTest {
     void testSaveQuestionario() {
         Questionario questionario = new Questionario();
         questionario.setId(1L);
-        questionario.setEnunciado("Qual é a capital do Brasil?");
+        
 
         when(repository.save(questionario)).thenReturn(questionario);
 
         Questionario salvo = service.createQuestionario(questionario);
 
         assertNotNull(salvo);
-        assertEquals("Qual é a capital do Brasil?", salvo.getEnunciado());
+       
         verify(repository, times(1)).save(questionario);
     }
 
@@ -69,11 +69,11 @@ class QuestionarioServiceTest {
     void testGetQuestionariosByCategoria() {
         Questionario questionario1 = new Questionario();
         questionario1.setId(1L);
-        questionario1.setEnunciado("Qual é a capital do Brasil?");
+      
 
         Questionario questionario2 = new Questionario();
         questionario2.setId(2L);
-        questionario2.setEnunciado("Qual é a capital da França?");
+        
 
         List<Questionario> questionariosMock = List.of(questionario1, questionario2);
 
@@ -82,8 +82,7 @@ class QuestionarioServiceTest {
         List<Questionario> resultado = service.getQuestionariosByCategoria(1L);
 
         assertEquals(2, resultado.size());
-        assertEquals("Qual é a capital do Brasil?", resultado.get(0).getEnunciado());
-        assertEquals("Qual é a capital da França?", resultado.get(1).getEnunciado());
+        
         verify(repository, times(1)).findByCategoriaId(1L);
     }
 
@@ -91,19 +90,18 @@ class QuestionarioServiceTest {
     void testUpdateQuestionario() {
         Questionario questionarioOriginal = new Questionario();
         questionarioOriginal.setId(1L);
-        questionarioOriginal.setEnunciado("Qual é a capital do Brasil?");
+       
 
         Questionario questionarioAtualizado = new Questionario();
         questionarioAtualizado.setId(1L);
-        questionarioAtualizado.setEnunciado("Qual é a capital da Argentina?");
+        
 
         when(repository.save(questionarioAtualizado)).thenReturn(questionarioAtualizado);
 
         Questionario resultado = service.updateQuestionario(1L, questionarioAtualizado);
 
         assertNotNull(resultado);
-        assertEquals("Qual é a capital da Argentina?", resultado.getEnunciado());
-        verify(repository, times(1)).save(questionarioAtualizado);
+       verify(repository, times(1)).save(questionarioAtualizado);
     }
 
     @Test

@@ -2,6 +2,9 @@ package com.ifpb.ads.fliplearn.controller;
 
 import com.ifpb.ads.fliplearn.entity.Categoria;
 import com.ifpb.ads.fliplearn.repository.CategoriaRepository;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,10 +15,11 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/categorias")
+@RequiredArgsConstructor
 public class CategoriaController {
 
-    @Autowired
-    private CategoriaRepository categoriaRepository;
+   
+    private final CategoriaRepository categoriaRepository;
 
     // Criar uma nova categoria
     @PostMapping
