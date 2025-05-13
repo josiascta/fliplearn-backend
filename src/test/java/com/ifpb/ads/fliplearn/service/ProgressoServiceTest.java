@@ -1,67 +1,133 @@
 package com.ifpb.ads.fliplearn.service;
 
-import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.Arrays;
-import java.util.List;
-
 import com.ifpb.ads.fliplearn.entity.Curso;
 import com.ifpb.ads.fliplearn.entity.Progresso;
 import com.ifpb.ads.fliplearn.repository.ProgressoRepository;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.*;
+
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 class ProgressoServiceTest {
 
-    @Mock
-    private ProgressoRepository repository;
-
     @InjectMocks
-    private ProgressoService service;
+    private ProgressoService progressoService;
+
+    @Mock
+    private ProgressoRepository progressoRepository;
+
+    private Progresso progresso;
+    private Curso curso;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-    }
 
-    @Test
-    void testSave_deveSalvarProgresso() {
-        Progresso progresso = new Progresso();
-        Curso curso = new Curso();
+        curso = new Curso();
+        curso.setId(1L);
+        curso.setNome("Java Básico");
+        curso.setCargaHoraria(40.0);
 
-        curso.setNome("Português");
+        progresso = new Progresso();
         progresso.setId(1L);
         progresso.setCurso(curso);
-
-        // Supondo que você modificou o método save para retornar o progresso salvo
-        when(repository.save(progresso)).thenReturn(progresso);
-
-        Progresso salvo = service.save(progresso);
-
-        assertNotNull(salvo);
-        assertEquals(progresso.getId(), salvo.getId());
-        assertEquals(progresso.getCurso(), salvo.getCurso());
-
-        verify(repository, times(1)).save(progresso);
+        progresso.setDataInicio(new Date());
+        progresso.setDataUltimaAtividade(new Date());
+        progresso.setNotaMedia(9.5);
+        progresso.setFeedback("Muito bom");
+        progresso.setPercentualConcluido(0.0);
     }
 
     @Test
-    void testFindAll_deveRetornarListaDeProgresso() {
-        Progresso p1 = new Progresso();
-        Progresso p2 = new Progresso();
+    void testSave() {
+        when(progressoRepository.save(progresso)).thenReturn(progresso);
 
-        when(repository.findAll()).thenReturn(Arrays.asList(p1, p2));
+        Progresso saved = progressoService.save(progresso);
 
-        List<Progresso> result = service.findAll();
+        assertNotNull(saved);
+        assertEquals("Muito bom", saved.getFeedback());
+        verify(progressoRepository, times(1)).save(progresso);
+    }
 
-        assertEquals(2, result.size());
-        assertTrue(result.contains(p1));
-        assertTrue(result.contains(p2));
-        verify(repository, times(1)).findAll();
+    @Test
+    void testFindAll() {
+        when(progressoRepository.findAll()).thenReturn(Arrays.asList(progresso));
+
+        List<Progresso> result = progressoService.findAll();
+
+        assertEquals(1, result.size());
+        verify(progressoRepository, times(1)).findAll();
+    }
+
+    @Test
+    void testGetByIdFound() {
+        when(progressoRepository.findById(1L)).thenReturn(Optional.of(progresso));
+
+        Progresso found = progressoService.getById(1L);
+
+        assertNotNull(found);
+        assertEquals(1L, found.getId());
+        verify(progressoRepository, times(1)).findById(1L);
+    }
+
+    @Test
+    void testGetByIdNotFound() {
+        when(progressoRepository.findById(99L)).thenReturn(Optional.empty());
+
+        RuntimeException exception = assertThrows(RuntimeException.class, () ->
+                progressoService.getById(99L));
+
+        assertEquals("Progresso não encontrado com id: 99", exception.getMessage());
+    }
+
+    @Test
+    void testUpdateSuccess() {
+        when(progressoRepository.save(progresso)).thenReturn(progresso);
+
+        Progresso updated = progressoService.update(1L, progresso);
+
+        assertNotNull(updated);
+        assertEquals(1L, updated.getId());
+        verify(progressoRepository, times(1)).save(progresso);
+    }
+
+    @Test
+    void testUpdateIdMismatch() {
+        progresso.setId(1L);
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
+                progressoService.update(2L, progresso));
+
+        assertEquals("ID do progresso não corresponde ao ID fornecido.", exception.getMessage());
+    }
+
+    @Test
+    void testDelete() {
+        doNothing().when(progressoRepository).deleteById(1L);
+
+        progressoService.delete(1L);
+
+        verify(progressoRepository, times(1)).deleteById(1L);
+    }
+
+    @Test
+    void testRecalcularProgresso() {
+        progresso.setId(1L);
+        double cargaHorariaCompletada = 20.0;
+
+        when(progressoRepository.save(progresso)).thenReturn(progresso);
+
+        progressoService.recalcularProgresso(cargaHorariaCompletada, progresso);
+
+        assertEquals(50.0, progresso.getPercentualConcluido());
+        verify(progressoRepository, times(1)).save(progresso);
     }
 }
