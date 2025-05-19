@@ -7,3 +7,4 @@ public record ProfessorCreateDTO(Long id,
                                  String email,
                                  Date dataDeNascimento)
 {}
+

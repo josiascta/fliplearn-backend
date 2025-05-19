@@ -21,7 +21,7 @@ class CategoriaServiceTest {
     @BeforeEach
     void setUp() {
         repository = Mockito.mock(CategoriaRepository.class);
-        service = new CategoriaService(repository);
+        service = new CategoriaService();
     }
 
     @Test
