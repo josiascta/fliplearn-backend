@@ -36,7 +36,7 @@ public class AlunoController {
     }
 
     @PostMapping
-    public ResponseEntity<AlunoDTO> create(@RequestBody AlunoCreateDTO alunoCreateDTO) {
+    public ResponseEntity<AlunoDTO> create(@RequestBody AlunoCreateDTO alunoCreateDTO) throws Exception{
         return new ResponseEntity<>(alunoService.create(alunoCreateDTO), HttpStatus.OK);
     }
 }

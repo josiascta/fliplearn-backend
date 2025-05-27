@@ -32,12 +32,12 @@ public class ProfessorController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ProfessorDTO> update(@PathVariable Long id,
-                                               @RequestBody ProfessorCreateDTO professorCreateDTO) throws RegraDeNegocioException {
+                                               @RequestBody ProfessorCreateDTO professorCreateDTO) throws Exception {
         return new ResponseEntity<>(professorService.update(professorCreateDTO, id), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<ProfessorDTO> create(@RequestBody ProfessorCreateDTO professorCreateDTO) {
+    public ResponseEntity<ProfessorDTO> create(@RequestBody ProfessorCreateDTO professorCreateDTO) throws Exception {
         return new ResponseEntity<>(professorService.create(professorCreateDTO), HttpStatus.OK);
     }
 

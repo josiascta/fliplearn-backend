@@ -1,10 +1,16 @@
 package com.ifpb.ads.fliplearn.dto;
 
-import java.util.Date;
+import lombok.Getter;
 
-public record ProfessorCreateDTO(Long id,
-                                 String nome,
-                                 String email,
-                                 Date dataDeNascimento)
+import java.util.Date;
+import java.util.List;
+
+public record ProfessorCreateDTO(
+        String login,
+        String senha,
+        String nome,
+        String sobrenome,
+        Date dataDeNascimento,
+        @Getter List<Integer> cargos)
 {}
 

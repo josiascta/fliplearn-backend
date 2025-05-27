@@ -3,10 +3,11 @@ package com.ifpb.ads.fliplearn.dto;
 import java.util.Date;
 
 public record ProfessorDTO(
-        Long id,
+        Long idUsuario,
         String nome,
-        String email,
+        String login,
         Date dataDeNascimento
+        //List<Curso> cursos
         // List<Curso> cursos
 ) {}
 

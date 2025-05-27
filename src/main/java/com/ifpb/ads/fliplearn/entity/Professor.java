@@ -1,25 +1,18 @@
 package com.ifpb.ads.fliplearn.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 
 import java.util.Date;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "professor")
-public class Professor {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "nomeProfessor", nullable = false)
-    private String nome;
-
-    @Column(name = "emailProfessor", nullable = false)
-    private String email;
+public class Professor extends User{
 
     @Column(name = "dataDeNascimentoProfessor", nullable = false)
     private Date dataDeNascimento;
