@@ -3,7 +3,6 @@ package com.ifpb.ads.fliplearn.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-
 import java.util.Date;
 
 @Getter
@@ -11,12 +10,15 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "professor")
-public class Professor extends User{
+@Table(name = "aluno")
+public class Aluno extends User{
 
-    @Column(name = "dataDeNascimentoProfessor", nullable = false)
+    @Column(name = "dataDeNascimentoAluno", nullable = false)
     private Date dataDeNascimento;
 
-    //@OneToMany(mappedBy = "professor")
+    @Column(name = "graduacao", nullable = false)
+    private String graduacao;
+
+    //@ManyToMany(mappedBy = "alunos")
     //private List<Curso> cursos
 }
