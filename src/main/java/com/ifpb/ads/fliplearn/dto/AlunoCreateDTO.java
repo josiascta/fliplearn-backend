@@ -14,4 +14,5 @@ public record AlunoCreateDTO(
         Date dataDeNascimento,
         String graduacao,
         @Getter List<Integer> cargos
+        //@Getter List<Long> cursosIds
 ) {}

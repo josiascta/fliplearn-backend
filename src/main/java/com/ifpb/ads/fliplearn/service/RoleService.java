@@ -1,21 +1,22 @@
 package com.ifpb.ads.fliplearn.service;
 
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.ifpb.ads.fliplearn.entity.Role;
 import com.ifpb.ads.fliplearn.exception.RegraDeNegocioException;
 import com.ifpb.ads.fliplearn.repository.RoleRepository;
-import com.ifpb.ads.fliplearn.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
-import java.util.List;
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class RoleService {
 
     private final RoleRepository cargoRepository;
-    private final UserRepository usuarioRepository;
+
 
     public Role findById(Integer idCargo) throws RegraDeNegocioException {
         return cargoRepository.findById(idCargo).orElseThrow(() -> new RegraDeNegocioException("Pessoa não encontrada!"));

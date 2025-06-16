@@ -1,20 +1,21 @@
 package com.ifpb.ads.fliplearn.service;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ifpb.ads.fliplearn.dto.AlunoCreateDTO;
 import com.ifpb.ads.fliplearn.dto.AlunoDTO;
 import com.ifpb.ads.fliplearn.entity.Aluno;
 import com.ifpb.ads.fliplearn.entity.Role;
-import com.ifpb.ads.fliplearn.entity.User;
 import com.ifpb.ads.fliplearn.exception.RegraDeNegocioException;
 import com.ifpb.ads.fliplearn.repository.AlunoRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
@@ -30,7 +31,7 @@ public class AlunoService {
         usuarioEntity.setSenha(bCryptPasswordEncoder.encode(usuarioEntity.getPassword()));
         Set<Role> cargoEntitySet = new HashSet<>();
 
-        for(Integer i : alunoCreateDTO.getCargos()){
+        for(Integer i : alunoCreateDTO.cargos()){
             cargoEntitySet.add(cargoService.findById(i));
         }
         usuarioEntity.setCargos(cargoEntitySet);

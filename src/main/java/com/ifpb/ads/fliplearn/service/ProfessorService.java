@@ -1,20 +1,21 @@
 package com.ifpb.ads.fliplearn.service;
 
-import com.ifpb.ads.fliplearn.dto.ProfessorCreateDTO;
-import com.ifpb.ads.fliplearn.dto.ProfessorDTO;
-import com.ifpb.ads.fliplearn.entity.Aluno;
-import com.ifpb.ads.fliplearn.entity.Professor;
-import com.ifpb.ads.fliplearn.entity.Role;
-import com.ifpb.ads.fliplearn.repository.ProfessorRepository;
-import com.ifpb.ads.fliplearn.exception.RegraDeNegocioException;
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ifpb.ads.fliplearn.dto.ProfessorCreateDTO;
+import com.ifpb.ads.fliplearn.dto.ProfessorDTO;
+import com.ifpb.ads.fliplearn.entity.Professor;
+import com.ifpb.ads.fliplearn.entity.Role;
+import com.ifpb.ads.fliplearn.exception.RegraDeNegocioException;
+import com.ifpb.ads.fliplearn.repository.ProfessorRepository;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
@@ -30,7 +31,7 @@ public class ProfessorService {
         usuarioEntity.setSenha(bCryptPasswordEncoder.encode(usuarioEntity.getPassword()));
         Set<Role> cargoEntitySet = new HashSet<>();
 
-        for(Integer i : professorCreateDTO.getCargos()){
+        for(Integer i : professorCreateDTO.cargos()){
             cargoEntitySet.add(cargoService.findById(i));
         }
         usuarioEntity.setCargos(cargoEntitySet);

@@ -1,6 +1,5 @@
 package com.ifpb.ads.fliplearn.entity;
 
-
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -8,39 +7,39 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "tb_curso")
-public class Curso {
+public class Modulo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nomeCurso", nullable = false)
+    @Column(name = "nome_modulo", nullable = false)
     private String nome;
 
-    @Column(name = "descricaoCurso")
+    @Column(name = "descricao_modulo")
     private String descricao;
 
-    @Column
-    private Double cargaHoraria;
+    @Column(name = "data_inicio", nullable = false)
+    private String dataInicio;
+
+    @Column(name = "data_fim", nullable = false)
+    private String dataFim;
 
     @ManyToOne
-    private Professor professor;
+    private Curso curso;
 
-    @ManyToMany
-    private List<Aluno> alunos;
-
-    @OneToMany(mappedBy = "curso")
-    private List<Modulo> modulos;
+    @OneToMany(mappedBy = "modulo")
+    private List<VideoAula> videoAulas;
+    
+    @OneToMany(mappedBy = "modulo")
+    private List<Questionario> questionarios;
 
 }

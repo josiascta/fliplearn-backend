@@ -1,9 +1,8 @@
 package com.ifpb.ads.fliplearn.dto;
 
-import lombok.Data;
-
-import java.math.BigInteger;
 import java.util.List;
+
+import lombok.Data;
 
 @Data
 public class UserDTO {

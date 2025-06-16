@@ -1,9 +1,16 @@
 package com.ifpb.ads.fliplearn.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
-
 import java.util.Date;
+import java.util.List;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -19,6 +26,6 @@ public class Aluno extends User{
     @Column(name = "graduacao", nullable = false)
     private String graduacao;
 
-    //@ManyToMany(mappedBy = "alunos")
-    //private List<Curso> cursos
+    @ManyToMany
+    private List<Curso> cursos;
 }

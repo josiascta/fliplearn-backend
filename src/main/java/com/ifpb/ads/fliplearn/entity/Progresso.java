@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -42,8 +43,8 @@ public class Progresso {
     @OneToOne
     private Curso curso;
 
-    // @ManyToOne
-    // private Aluno aluno;
+    @ManyToOne
+    private Aluno aluno;
     
 
     public Double getCargaHorariaDoCurso(){
