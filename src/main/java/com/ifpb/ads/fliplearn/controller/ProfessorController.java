@@ -17,11 +17,13 @@ import com.ifpb.ads.fliplearn.dto.ProfessorCreateDTO;
 import com.ifpb.ads.fliplearn.dto.ProfessorDTO;
 import com.ifpb.ads.fliplearn.service.ProfessorService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/professor")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
 public class ProfessorController {
 
     private final ProfessorService professorService;

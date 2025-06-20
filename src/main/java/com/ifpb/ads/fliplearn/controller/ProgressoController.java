@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ifpb.ads.fliplearn.entity.Progresso;
 import com.ifpb.ads.fliplearn.service.ProgressoService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 @RestController
 @RequestMapping("progressos")
+@SecurityRequirement(name = "bearerAuth")
 public class ProgressoController {
 
 

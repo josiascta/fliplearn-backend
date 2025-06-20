@@ -25,6 +25,7 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults()) // Habilita CORS no Spring Security
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/auth/**").permitAll()
+                            .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-resources/**", "/webjars/**").permitAll()
                             .requestMatchers(HttpMethod.GET, "/aluno/**").hasAnyRole("ALUNO", "PROFESSOR")
                             .requestMatchers("/aluno/**").hasRole("ALUNO")
                             .requestMatchers("/professor/**").hasRole("PROFESSOR")

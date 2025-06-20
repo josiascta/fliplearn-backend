@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ifpb.ads.fliplearn.entity.Categoria;
 import com.ifpb.ads.fliplearn.repository.CategoriaRepository;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/categorias")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
 public class CategoriaController {
 
    

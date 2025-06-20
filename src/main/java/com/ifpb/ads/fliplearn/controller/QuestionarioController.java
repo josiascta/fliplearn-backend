@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ifpb.ads.fliplearn.entity.Questionario;
 import com.ifpb.ads.fliplearn.repository.QuestionarioRepository;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/questionarios")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
 public class QuestionarioController {
 
    

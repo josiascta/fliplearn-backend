@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ifpb.ads.fliplearn.entity.VideoAula;
 import com.ifpb.ads.fliplearn.service.VideoAulaService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 @RestController
+@SecurityRequirement(name = "bearerAuth")
 public class VideoAulaController {
 
     @Autowired

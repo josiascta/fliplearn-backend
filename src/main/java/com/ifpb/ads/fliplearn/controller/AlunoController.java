@@ -17,11 +17,13 @@ import com.ifpb.ads.fliplearn.dto.AlunoCreateDTO;
 import com.ifpb.ads.fliplearn.dto.AlunoDTO;
 import com.ifpb.ads.fliplearn.service.AlunoService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/aluno")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
 public class AlunoController {
 
     private final AlunoService alunoService;

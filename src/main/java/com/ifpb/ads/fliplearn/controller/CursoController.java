@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.*;
 
 import com.ifpb.ads.fliplearn.entity.Curso;
 import com.ifpb.ads.fliplearn.service.CursoService;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.GetMapping;
+
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 
 
 @RestController
 @RequestMapping("cursos")
+@SecurityRequirement(name = "bearerAuth")
 public class CursoController {
 
     @Autowired

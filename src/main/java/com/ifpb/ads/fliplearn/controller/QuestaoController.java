@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ifpb.ads.fliplearn.entity.Questao;
 import com.ifpb.ads.fliplearn.service.QuestaoService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 @RestController
 @RequestMapping("questoes")
+@SecurityRequirement(name = "bearerAuth")
 public class QuestaoController {
 
     @Autowired
